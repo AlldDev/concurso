@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa de Probabilidade | Câmara de Tupi Paulista 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F4;
+    --ink:#17242B;
+    --ink-soft:#48585F;
+    --line:#DDE2DE;
+    --petrol:#0F6E64;
+    --petrol-deep:#0A4A43;
+    --card:#FFFFFF;
+    /* escala de calor = probabilidade de cair */
+    --heat-max:#A6331A;
+    --heat-high:#DB7A3B;
+    --heat-mid:#E8B84B;
+    --heat-low:#C3CBC4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+  .mono{font-family:"IBM Plex Mono",monospace;}
+
+  /* TOPBAR / MENU */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--petrol-deep);
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .bar-inner{
+    max-width:960px;margin:0 auto;padding:12px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  }
+  .brand{
+    font-family:"Fraunces",serif;font-weight:600;color:#EAF3F1;text-decoration:none;
+    font-size:16px;letter-spacing:-.01em;white-space:nowrap;
+  }
+  .brand .mini{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--heat-mid);margin-left:8px;}
+  .topbar nav{display:flex;gap:6px;flex-wrap:wrap;}
+  .topbar nav a{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    color:#B9D6D0;text-decoration:none;padding:7px 12px;border-radius:8px;white-space:nowrap;
+    transition:background .15s,color .15s;
+  }
+  .topbar nav a:hover{background:rgba(255,255,255,.08);color:#fff;}
+  .topbar nav a.active{background:var(--heat-high);color:#2a1405;}
+
+  /* SECTIONS */
+  section{padding:44px 0;border-bottom:1px solid var(--line);}
+  h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(24px,4vw,32px);margin:0 0 6px;letter-spacing:-.01em;
+  }
+  .lead{color:var(--ink-soft);max-width:66ch;margin:0 0 26px;}
+  h3{font-family:"Fraunces",serif;font-weight:600;font-size:20px;margin:30px 0 12px;}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:680px){.grid2{grid-template-columns:1fr;}}
+
+  .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
+  .box h4{margin:0 0 8px;font-size:15px;font-family:"IBM Plex Mono",monospace;letter-spacing:.04em;color:var(--petrol);text-transform:uppercase;}
+  .box p{margin:0;color:var(--ink-soft);font-size:14.5px;}
+  .box.warn{border-left:4px solid var(--heat-high);}
+
+  ul.clean{list-style:none;padding:0;margin:0;}
+  ul.clean li{padding:8px 0;border-bottom:1px dashed var(--line);font-size:15px;}
+  ul.clean li:last-child{border-bottom:none;}
+  ul.clean b{color:var(--petrol-deep);}
+
+  /* HEAT TABLE */
+  table{width:100%;border-collapse:collapse;margin-top:6px;font-size:14.5px;}
+  th{
+    text-align:left;font-family:"IBM Plex Mono",monospace;font-size:11px;
+    text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);
+    padding:10px 10px;border-bottom:2px solid var(--ink);
+  }
+  td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  td.tema{font-weight:600;width:26%;}
+  td.sub{color:var(--ink-soft);font-size:13.5px;}
+  .tabela-mat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 16px 8px;margin-bottom:18px;overflow-x:auto;}
+  @media(max-width:600px){table{min-width:520px;}}
+  .tabela-mat .cap{
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;
+    padding:14px 4px 2px;
+  }
+  .tabela-mat .cap .nm{font-family:"Fraunces",serif;font-size:19px;font-weight:600;}
+  .tabela-mat .cap .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-soft);}
+
+  .heat{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    padding:3px 9px;border-radius:20px;white-space:nowrap;letter-spacing:.02em;
+  }
+  .h-max{background:var(--heat-max);color:#fff;}
+  .h-high{background:var(--heat-high);color:#2a1405;}
+  .h-mid{background:var(--heat-mid);color:#3a2c05;}
+  .h-low{background:var(--heat-low);color:#2a322b;}
+
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:2px 0 22px;}
+  .legend .heat{font-size:10.5px;}
+
+  a{color:var(--petrol-deep);}
+
+  footer{padding:34px 0 60px;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line);}
+  footer p{max-width:70ch;}
+
+  @media print{
+    body{background:#fff;}
+    .topbar{position:static;background:#fff;border-bottom:2px solid #000;}
+    .topbar nav a{color:#333;}
+    section{border-color:#ccc;}
+    .box,.tabela-mat{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="bar-inner">
+    <a class="brand" href="index.html">Câmara de Tupi Paulista<span class="mini">D-29</span></a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="mapa-de-probabilidade.html" class="active">Mapa de probabilidade</a>
+      <a href="cronograma.html">Cronograma</a>
+      <a href="questoes.html">Questões</a>
+      <a href="02-apostila-por-dia.html">Apostila por dia</a>
+      <a href="03-apostila-volume-1.html">Apostila Vol. 1</a>
+      <a href="04-apostila-volume-2.html">Apostila Vol. 2</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h2>Mapa de probabilidade da banca</h2>
+      <p class="lead">O que a CONSESP costuma cobrar, por matéria, com os subtemas mais recorrentes e o quanto costumam aparecer. A escala de calor é uma estimativa de padrão histórico da banca (veja a nota final), não estatística exata: use para decidir onde gastar mais tempo.</p>
+
+      <div class="legend">
+        <span class="heat h-max">Muito alta</span>
+        <span class="heat h-high">Alta</span>
+        <span class="heat h-mid">Média</span>
+        <span class="heat h-low">Baixa</span>
+      </div>
+
+      <!-- PORTUGUES -->
+      <div class="tabela-mat">
+        <div class="cap"><span class="nm">Língua Portuguesa</span><span class="tag">10 questões / peso 1 / os dois cargos</span></div>
+        <table>
+          <tr><th>Tema</th><th>Subtemas que mais caem</th><th>Cai?</th></tr>
+          <tr><td class="tema">Interpretação de texto</td><td class="sub">Ideia central, inferência, sentido da palavra no contexto, relação entre trechos</td><td><span class="heat h-max">Muito alta</span></td></tr>
+          <tr><td class="tema">Acentuação gráfica</td><td class="sub">Ditongos abertos (herói, chapéu; e a reforma: ideia e heroico sem acento), hiatos (saída, país), acento diferencial (pôde x pode, pôr x por), proparoxítonas</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Ortografia</td><td class="sub">Por que / porque / por quê / porquê, mal x mau, mas x mais, há x a, uso de s/z, x/ch, g/j</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Pontuação</td><td class="sub">Vírgula (aposto, vocativo, adjunto deslocado, enumeração), ponto e vírgula, dois-pontos</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Crase</td><td class="sub">Casos obrigatórios, locuções (às vezes, à noite), à moda de, casos proibidos (antes de verbo e de masculino)</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Concordância</td><td class="sub">Verbal e nominal, sujeito composto, verbo haver impessoal, um dos que</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Figuras de linguagem</td><td class="sub">Metáfora, metonímia, antítese, hipérbole, prosopopeia, eufemismo</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Regência</td><td class="sub">Assistir, aspirar, visar, obedecer, preferir</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Morfologia</td><td class="sub">Classes de palavras, pronomes (pessoais e relativos), conjunções</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Vícios de linguagem</td><td class="sub">Ambiguidade, pleonasmo, cacófato, barbarismo</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Fonologia</td><td class="sub">Encontros vocálicos e consonantais, dígrafos, divisão silábica</td><td><span class="heat h-low">Baixa</span></td></tr>
+        </table>
+      </div>
+
+      <!-- INFORMATICA -->
+      <div class="tabela-mat">
+        <div class="cap"><span class="nm">Informática</span><span class="tag">10 questões / peso 1 / os dois cargos</span></div>
+        <table>
+          <tr><th>Tema</th><th>Subtemas que mais caem</th><th>Cai?</th></tr>
+          <tr><td class="tema">Excel</td><td class="sub">Fórmulas SOMA, MÉDIA, SE, CONT.SE, SOMASE, PROCV, MÁXIMO, MÍNIMO; referência absoluta com $; operadores</td><td><span class="heat h-max">Muito alta</span></td></tr>
+          <tr><td class="tema">Word</td><td class="sub">Guias e formatação, cabeçalho e rodapé, controle de alterações, atalhos</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Atalhos de teclado</td><td class="sub">Ctrl + C / V / X / Z / B / I / S / P, teclas de função</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Segurança da informação</td><td class="sub">Vírus, worm, trojan, ransomware, phishing, backup, firewall, criptografia; confidencialidade, integridade, disponibilidade</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Windows 10 e 11</td><td class="sub">Explorador de Arquivos, atalhos, área de trabalho, configurações</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Internet</td><td class="sub">Navegadores, URL, http x https, cookies, favoritos</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Outlook e e-mail</td><td class="sub">Para, Cc, Cco, anexos, organização de mensagens</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">PowerPoint</td><td class="sub">Slides, transições, modo apresentação</td><td><span class="heat h-low">Baixa</span></td></tr>
+          <tr><td class="tema">Microsoft 365 e nuvem</td><td class="sub">Compartilhamento, colaboração online, OneDrive</td><td><span class="heat h-low">Baixa</span></td></tr>
+        </table>
+      </div>
+
+      <!-- RL -->
+      <div class="tabela-mat">
+        <div class="cap"><span class="nm">Raciocínio Lógico</span><span class="tag">10 questões / peso 1 / só Auxiliar</span></div>
+        <table>
+          <tr><th>Tema</th><th>Subtemas que mais caem</th><th>Cai?</th></tr>
+          <tr><td class="tema">Porcentagem</td><td class="sub">Acréscimo, desconto, variação percentual, aumentos sucessivos</td><td><span class="heat h-max">Muito alta</span></td></tr>
+          <tr><td class="tema">Regra de três</td><td class="sub">Simples, direta e inversa</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Razão e proporção</td><td class="sub">Divisão proporcional, grandezas</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Conjuntos e Venn</td><td class="sub">Diagramas com 2 e 3 conjuntos, contagem de elementos</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Sequências e padrões</td><td class="sub">Numéricas, alfabéticas e figurais, regra de formação</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Problemas aritméticos</td><td class="sub">Idade, tempo, trabalho e produção, equações simples</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Probabilidade básica</td><td class="sub">Espaço amostral, evento, probabilidade simples e complementar</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">MMC e MDC</td><td class="sub">Múltiplos, divisores, aplicação em problemas</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Tabelas e gráficos</td><td class="sub">Leitura, comparação de dados, valores absolutos e percentuais</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Análise combinatória</td><td class="sub">Princípio aditivo e multiplicativo, arranjo, permutação, combinação</td><td><span class="heat h-low">Baixa</span></td></tr>
+        </table>
+      </div>
+
+      <!-- ESPECIFICOS COMPARTILHADOS -->
+      <div class="tabela-mat">
+        <div class="cap"><span class="nm">Específicos: o que vale para os dois</span><span class="tag">peso 3 / conta para Diretor e Auxiliar</span></div>
+        <table>
+          <tr><th>Tema</th><th>Subtemas que mais caem</th><th>Cai?</th></tr>
+          <tr><td class="tema">Princípios da Administração</td><td class="sub">LIMPE (legalidade, impessoalidade, moralidade, publicidade, eficiência), supremacia do interesse público, autotutela</td><td><span class="heat h-max">Muito alta</span></td></tr>
+          <tr><td class="tema">Regimento Interno de Tupi Paulista</td><td class="sub">Lei local: Mesa, Presidência, comissões, sessões, tramitação. Alto retorno porque poucos estudam</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Lei Orgânica de Tupi Paulista</td><td class="sub">Lei local: organização do Município e da Câmara, competências, processo legislativo</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Poder Legislativo Municipal</td><td class="sub">Competências da Câmara, Mesa Diretora, Presidência, Vereadores, Comissões</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Processo legislativo</td><td class="sub">Projeto de lei, requerimento, indicação, moção, emenda, autógrafo; tipos de sessão</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Licitações (Lei 14.133/2021)</td><td class="sub">Princípios, modalidades, fases da licitação, noções de contratos</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">LGPD e LAI</td><td class="sub">Dado pessoal x sensível, direitos do titular, Lei de Acesso à Informação, transparência</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Redação oficial</td><td class="sub">Ofício, memorando, ata, certidão, despacho; impessoalidade, clareza, padronização</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Almoxarifado e gestão documental</td><td class="sub">Patrimônio, arquivamento físico e digital, autenticação de cópias</td><td><span class="heat h-low">Baixa</span></td></tr>
+        </table>
+      </div>
+
+      <!-- ESPECIFICOS DIRETOR -->
+      <div class="tabela-mat">
+        <div class="cap"><span class="nm">Específicos: núcleo financeiro do Diretor</span><span class="tag">peso 3 / 20 questões / o coração da nota</span></div>
+        <table>
+          <tr><th>Tema</th><th>Subtemas que mais caem</th><th>Cai?</th></tr>
+          <tr><td class="tema">Orçamento público</td><td class="sub">PPA, LDO, LOA, ciclo orçamentário, prazos, princípios orçamentários</td><td><span class="heat h-max">Muito alta</span></td></tr>
+          <tr><td class="tema">Estágios da despesa</td><td class="sub">Empenho, liquidação, pagamento (a pergunta clássica da CONSESP)</td><td><span class="heat h-max">Muito alta</span></td></tr>
+          <tr><td class="tema">Receita pública</td><td class="sub">Classificação e estágios: previsão, lançamento, arrecadação, recolhimento</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Lei 4.320/64</td><td class="sub">Créditos adicionais (suplementar, especial, extraordinário), restos a pagar</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">LRF (LC 101/2000)</td><td class="sub">Despesa com pessoal, limites do Legislativo municipal, Relatório de Gestão Fiscal, transparência fiscal</td><td><span class="heat h-high">Alta</span></td></tr>
+          <tr><td class="tema">Controle interno e externo</td><td class="sub">Finalidade, Tribunal de Contas, prestação de contas</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Patrimônio público</td><td class="sub">Inventário, depreciação, reavaliação, baixa</td><td><span class="heat h-mid">Média</span></td></tr>
+          <tr><td class="tema">Sistemas oficiais</td><td class="sub">Noções de AUDESP, SICONFI, eSocial, EFD-Reinf</td><td><span class="heat h-low">Baixa</span></td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Sobre as probabilidades:</b> a escala de calor reflete o padrão histórico típico da banca CONSESP em cargos parecidos, com base em conhecimento até o começo de 2026. Não é uma estatística exata deste edital. Trate como bússola de priorização e ajuste conforme o que você encontrar nas provas anteriores reais da banca. Acompanhe também o site oficial (www.consesp.com.br) para o cartão de convocação e o local de prova, divulgados com no mínimo 3 dias de antecedência.</p>
+  </div>
+</footer>
+
+</body>
+</html>

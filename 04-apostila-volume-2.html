@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apostila Vol. 2 por dia | Câmara de Tupi Paulista</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F4;--ink:#17242B;--ink-soft:#48585F;--line:#DDE2DE;
+    --petrol:#0F6E64;--petrol-deep:#0A4A43;--card:#FFFFFF;
+    --heat-max:#A6331A;--heat-high:#DB7A3B;--heat-mid:#E8B84B;
+    --ok:#0F6E64;--trap:#B23A1E;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Inter",system-ui,sans-serif;font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px;}
+  header.hero{background:var(--petrol-deep);color:#EAF3F1;padding:48px 0 40px;border-bottom:6px solid var(--heat-high);}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:#8FC7BE;margin:0 0 14px;}
+  h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(30px,6vw,46px);line-height:1.03;margin:0 0 10px;letter-spacing:-.02em;}
+  .sub{font-size:16.5px;color:#B9D6D0;max-width:56ch;margin:0;}
+  .callout{background:#FBF3EC;border:1px solid #E7C9B2;border-left:4px solid var(--heat-high);border-radius:12px;padding:18px 22px;margin:30px 0;font-size:15px;color:#4a3a2c;}
+  .callout b{color:#7a3f16;}
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:30px 0;}
+  .toc h4{margin:0 0 6px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--petrol);}
+  .toc .wk{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:16px 0 6px;}
+  .toc ul{list-style:none;margin:0;padding:0;}
+  .toc li{padding:5px 0;border-bottom:1px dashed var(--line);display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;}
+  .toc li:last-child{border-bottom:none;}
+  .toc a{color:var(--ink);text-decoration:none;font-weight:500;}
+  .toc a:hover{color:var(--petrol);text-decoration:underline;}
+  .toc .dcode{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--petrol-deep);min-width:88px;}
+  .toc .star{color:var(--heat-high);font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;}
+
+  .day-head{background:var(--petrol-deep);color:#EAF3F1;border-radius:16px 16px 0 0;padding:18px 24px;margin-top:38px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;}
+  .day-head .dt{font-family:"Fraunces",serif;font-size:22px;font-weight:600;}
+  .day-head .dt small{font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:12px;color:#9FCBC3;display:block;letter-spacing:.05em;text-transform:uppercase;margin-top:2px;}
+  .day-head .dd{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;background:var(--heat-high);color:#2a1405;border-radius:8px;padding:5px 12px;}
+  .day-body{background:var(--card);border:1px solid var(--line);border-top:none;border-radius:0 0 16px 16px;padding:8px 24px 24px;}
+
+  .foco{background:#F1F5F3;border-radius:10px;padding:12px 16px;margin:16px 0;}
+  .foco .lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--petrol);margin-bottom:6px;}
+  .foco ul{list-style:none;margin:0;padding:0;}
+  .foco li{font-size:14.5px;padding:2px 0;}
+  .foco li span.p{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;color:#fff;background:var(--ink);border-radius:5px;padding:1px 6px;margin-right:8px;}
+  .qgoal{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--heat-max);font-weight:600;margin-top:8px;}
+
+  h3.topic-t{font-family:"Fraunces",serif;font-weight:600;font-size:20px;margin:26px 0 4px;}
+  .freq{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px;vertical-align:middle;margin-left:8px;}
+  .f-max{background:var(--heat-max);color:#fff;}.f-high{background:var(--heat-high);color:#2a1405;}.f-mid{background:var(--heat-mid);color:#3a2c05;}
+  h4.sec{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--petrol);margin:20px 0 6px;}
+  p{margin:0 0 10px;}
+  ul.body{margin:0 0 12px;padding-left:22px;}ul.body li{margin:4px 0;}
+  code,.fx{font-family:"IBM Plex Mono",monospace;background:#EEF1EF;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font-size:14px;}
+  .ex{background:#EAF3F1;border-radius:10px;padding:12px 16px;margin:8px 0 12px;font-size:15px;}
+  .ex b{color:var(--petrol-deep);}
+  .trapbox{background:#FBECE7;border:1px solid #E9C2B4;border-left:4px solid var(--trap);border-radius:10px;padding:14px 18px;margin:14px 0;}
+  .trapbox .t{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--trap);font-weight:600;margin-bottom:6px;}
+  .trapbox ul{margin:0;padding-left:20px;}.trapbox li{margin:5px 0;font-size:15px;}
+  .classic{font-size:14.5px;color:var(--ink-soft);border-left:3px solid var(--petrol);padding:4px 0 4px 14px;margin:12px 0;}
+  .classic b{color:var(--petrol-deep);}
+  .plan-note{background:#EEF1EF;border-left:4px solid var(--ink-soft);border-radius:10px;padding:14px 18px;margin:14px 0;font-size:14.5px;color:var(--ink-soft);}
+  .plan-note b{color:var(--ink);}
+
+  .q{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0;background:#FCFDFC;}
+  .q .qnum{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--petrol);font-size:13px;}
+  .q .enun{margin:6px 0 10px;font-weight:500;}
+  .q .opts{list-style:none;margin:0 0 12px;padding:0;}
+  .q .opts li{padding:5px 0;padding-left:30px;position:relative;}
+  .q .opts li .letra{position:absolute;left:0;top:5px;font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--ink-soft);}
+  .reveal{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--petrol);color:#fff;border:none;border-radius:8px;padding:8px 14px;cursor:pointer;}
+  .reveal:hover{background:var(--petrol-deep);}
+  .ans{display:none;margin-top:12px;background:#EAF3F1;border-radius:10px;padding:14px 16px;font-size:15px;}
+  .ans.show{display:block;}
+  .ans .gab{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--ok);}
+  .backtop{display:inline-block;margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--petrol);text-decoration:none;}
+  footer{padding:36px 0 60px;color:var(--ink-soft);font-size:13.5px;border-top:1px solid var(--line);margin-top:30px;}
+  footer p{max-width:72ch;}
+
+  /* TOPBAR / MENU */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--petrol-deep);
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .bar-inner{
+    max-width:960px;margin:0 auto;padding:12px 22px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  }
+  .brand{
+    font-family:"Fraunces",serif;font-weight:600;color:#EAF3F1;text-decoration:none;
+    font-size:16px;letter-spacing:-.01em;white-space:nowrap;
+  }
+  .brand .mini{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--heat-mid);margin-left:8px;}
+  .topbar nav{display:flex;gap:6px;flex-wrap:wrap;}
+  .topbar nav a{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    color:#B9D6D0;text-decoration:none;padding:7px 12px;border-radius:8px;white-space:nowrap;
+    transition:background .15s,color .15s;
+  }
+  .topbar nav a:hover{background:rgba(255,255,255,.08);color:#fff;}
+  .topbar nav a.active{background:var(--heat-high);color:#2a1405;}
+
+  @media print{
+    body{background:#fff;}
+    header.hero,.day-head{background:#fff;color:#000;border-bottom:2px solid #000;}
+    .day-head .dt small,.eyebrow,.sub{color:#333;}
+    .ans{display:block !important;}.reveal,.backtop{display:none;}
+    .q,.callout,.trapbox,.day-head,.day-body{break-inside:avoid;}
+    .topbar{position:static;background:#fff;border-bottom:2px solid #000;}
+    .topbar nav a{color:#333;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="bar-inner">
+    <a class="brand" href="index.html">Câmara de Tupi Paulista<span class="mini">D-29</span></a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="mapa-de-probabilidade.html">Mapa de probabilidade</a>
+      <a href="cronograma.html">Cronograma</a>
+      <a href="questoes.html">Questões</a>
+      <a href="02-apostila-por-dia.html">Apostila por dia</a>
+      <a href="03-apostila-volume-1.html">Apostila Vol. 1</a>
+      <a href="04-apostila-volume-2.html" class="active">Apostila Vol. 2</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="topo">
+  <div class="wrap">
+    <p class="eyebrow">Concurso 001/2026 &nbsp;/&nbsp; Banca CONSESP &nbsp;/&nbsp; Apostila por dia, Volume 2</p>
+    <h1>Volume 2:<br>os dias que faltavam</h1>
+    <p class="sub">Conteúdo completo dos dias que estavam como roteiro, com prioridade para o bloco financeiro do Diretor. Mesma pegada do Volume 1.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="callout">
+    <p style="margin:0 0 8px;"><b>Como usar.</b> Este volume completa os dias que no guia por dia estavam marcados como roteiro. Cada dia traz explicação, exemplos, pegadinhas e questões comentadas. Os dias marcados com <span class="star">★</span> são os de maior peso (núcleo financeiro do Diretor): reserve energia extra para eles.</p>
+    <p style="margin:0;">Questões autorais no estilo CONSESP, para treino. Para questões reais da banca, use o QConcursos (filtro CONSESP) e o PCI Concursos. Clique em "Ver gabarito comentado"; ao imprimir, os comentários aparecem sozinhos.</p>
+  </div>
+
+  <div class="toc">
+    <h4>Índice do Volume 2</h4>
+    <div class="wk">Semana 1 e 2</div>
+    <ul>
+      <li><span class="dcode">20/07 D-27</span><a href="#d27">Poderes administrativos</a></li>
+      <li><span class="dcode">21/07 D-26</span><a href="#d26">Poder Legislativo Municipal</a></li>
+      <li><span class="dcode">22/07 D-25</span><a href="#d25">Processo legislativo</a></li>
+      <li><span class="dcode">25/07 D-22</span><a href="#d22">Orçamento público <span class="star">★</span></a></li>
+      <li><span class="dcode">28/07 D-19</span><a href="#d19">Lei 4.320/64 <span class="star">★</span></a></li>
+      <li><span class="dcode">30/07 D-17</span><a href="#d17">LRF (LC 101) <span class="star">★</span></a></li>
+    </ul>
+    <div class="wk">Semana 3</div>
+    <ul>
+      <li><span class="dcode">01/08 D-15</span><a href="#d15">Regimento Interno e Lei Orgânica</a></li>
+      <li><span class="dcode">04/08 D-12</span><a href="#d12">Licitações (Lei 14.133)</a></li>
+      <li><span class="dcode">05/08 D-11</span><a href="#d11">Controle interno e externo <span class="star">★</span></a></li>
+      <li><span class="dcode">06/08 D-10</span><a href="#d10">Conjuntos, sequências e probabilidade</a></li>
+      <li><span class="dcode">07/08 D-9</span><a href="#d9">LGPD e LAI</a></li>
+    </ul>
+    <div class="wk">Semana 4</div>
+    <ul>
+      <li><span class="dcode">10/08 D-6</span><a href="#d6">Morfologia, figuras e vícios</a></li>
+      <li><span class="dcode">13/08 D-3</span><a href="#d3">Redação oficial e rotinas</a></li>
+      <li><span class="dcode">14/08 D-2</span><a href="#d2">MMC, MDC, média e gráficos</a></li>
+    </ul>
+  </div>
+
+  <!-- ===== D-27 ===== -->
+  <div class="day-head" id="d27"><div class="dt">Segunda, 20/07 <small>Administração Pública</small></div><div class="dd">D-27</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Princípios (revisão do Vol. 1)</li><li><span class="p">P2</span>Poderes administrativos</li></ul><div class="qgoal">Meta de questões do dia: 20</div></div>
+
+    <h3 class="topic-t">Poderes administrativos <span class="freq f-mid">Média</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li><b>Vinculado:</b> a lei define tudo, o agente não tem escolha.</li>
+      <li><b>Discricionário:</b> a lei deixa margem de conveniência e oportunidade (o mérito administrativo). O Judiciário controla a legalidade, não o mérito.</li>
+      <li><b>Hierárquico:</b> ordenar, fiscalizar, rever, delegar e avocar dentro da estrutura.</li>
+      <li><b>Disciplinar:</b> apurar faltas e aplicar sanções a quem tem vínculo com a Administração.</li>
+      <li><b>Regulamentar (normativo):</b> editar decretos e regulamentos para a fiel execução da lei.</li>
+      <li><b>De polícia:</b> limitar e condicionar direitos individuais em favor do interesse público (licenças, fiscalização, multas). Atributos: discricionariedade, autoexecutoriedade e coercibilidade.</li>
+    </ul>
+    <div class="ex"><b>Abuso de poder:</b> excesso de poder (o agente vai além da sua competência) e desvio de finalidade (usa a competência para um fim diferente do previsto em lei).</div>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Poder de polícia é atividade administrativa de limitar direitos, não a instituição "polícia".</li>
+      <li>Discricionário não é arbitrário: um é dentro da lei, o outro é contra a lei.</li>
+      <li>A autoexecutoriedade nem sempre existe (a cobrança de multa não paga, por exemplo, depende do Judiciário).</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 1</div>
+      <div class="enun">O poder que permite à Administração restringir e condicionar o uso de direitos individuais em benefício da coletividade é o poder:</div>
+      <ul class="opts"><li><span class="letra">a)</span> hierárquico</li><li><span class="letra">b)</span> disciplinar</li><li><span class="letra">c)</span> de polícia</li><li><span class="letra">d)</span> regulamentar</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> O poder de polícia limita e condiciona o exercício de direitos individuais em prol do interesse público.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 2</div>
+      <div class="enun">A escolha entre duas soluções igualmente válidas, conforme conveniência e oportunidade, caracteriza o ato:</div>
+      <ul class="opts"><li><span class="letra">a)</span> vinculado</li><li><span class="letra">b)</span> discricionário</li><li><span class="letra">c)</span> nulo</li><li><span class="letra">d)</span> arbitrário</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Conveniência e oportunidade (mérito) definem o ato discricionário, sempre dentro dos limites da lei.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-26 ===== -->
+  <div class="day-head" id="d26"><div class="dt">Terça, 21/07 <small>Poder Legislativo</small></div><div class="dd">D-26</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Competências da Câmara e da Mesa</li><li><span class="p">P2</span>Presidência, Vereadores e Comissões</li></ul><div class="qgoal">Meta de questões do dia: 25</div></div>
+
+    <h3 class="topic-t">Poder Legislativo Municipal <span class="freq f-high">Alta</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li>A <b>Câmara Municipal</b> tem duas funções centrais: <b>legislar</b> (fazer leis) e <b>fiscalizar</b> (controle externo, com auxílio do Tribunal de Contas).</li>
+      <li><b>Vereadores:</b> eleitos, mandato de 4 anos. O número segue faixas de população (art. 29 da Constituição).</li>
+      <li><b>Mesa Diretora:</b> dirige os trabalhos legislativos e administrativos (Presidente, Vice e Secretários).</li>
+      <li><b>Presidente:</b> representa a Câmara, dirige as sessões e promulga.</li>
+      <li><b>Comissões:</b> permanentes (analisam matérias por tema e dão pareceres) e temporárias (especiais e CPIs). A CPI tem poderes de investigação próprios das autoridades judiciais.</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>As contas anuais do Prefeito recebem <b>parecer prévio</b> do Tribunal de Contas, mas quem <b>julga</b> é a Câmara, e o parecer só deixa de prevalecer por decisão de 2/3 dos vereadores.</li>
+      <li>A Câmara legisla e fiscaliza; ela não executa (isso é do Executivo).</li>
+    </ul></div>
+    <p class="classic"><b>Pergunta clássica:</b> separar quem faz o quê (Mesa, Presidência, Comissões) e a diferença entre julgar e emitir parecer prévio.</p>
+    <div class="q"><div class="qnum">Questão 3</div>
+      <div class="enun">A função de elaborar leis e fiscalizar o Executivo cabe, no município, à:</div>
+      <ul class="opts"><li><span class="letra">a)</span> Prefeitura</li><li><span class="letra">b)</span> Câmara Municipal</li><li><span class="letra">c)</span> Controladoria</li><li><span class="letra">d)</span> Procuradoria</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Legislar e fiscalizar são as funções típicas do Poder Legislativo, exercido no município pela Câmara.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 4</div>
+      <div class="enun">O órgão colegiado que dirige os trabalhos legislativos e administrativos da Câmara é:</div>
+      <ul class="opts"><li><span class="letra">a)</span> a Comissão de Justiça</li><li><span class="letra">b)</span> o Plenário</li><li><span class="letra">c)</span> a Mesa Diretora</li><li><span class="letra">d)</span> a Procuradoria</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> A Mesa Diretora conduz os trabalhos. O Plenário delibera, mas não é o órgão diretor.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 5</div>
+      <div class="enun">Sobre as contas anuais do Prefeito, é correto afirmar que:</div>
+      <ul class="opts">
+        <li><span class="letra">a)</span> são julgadas pelo Tribunal de Contas.</li>
+        <li><span class="letra">b)</span> recebem parecer prévio do Tribunal de Contas, que só deixa de prevalecer por decisão de 2/3 da Câmara.</li>
+        <li><span class="letra">c)</span> são julgadas pelo Ministério Público.</li>
+        <li><span class="letra">d)</span> dispensam qualquer análise.</li>
+      </ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> O TCE emite parecer prévio; o julgamento é político, feito pela Câmara, e o parecer só cai por 2/3 dos vereadores.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-25 ===== -->
+  <div class="day-head" id="d25"><div class="dt">Quarta, 22/07 <small>Processo legislativo</small></div><div class="dd">D-25</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Proposições</li><li><span class="p">P2</span>Sessões e tramitação</li></ul><div class="qgoal">Meta de questões do dia: 25</div></div>
+
+    <h3 class="topic-t">Processo legislativo <span class="freq f-high">Alta</span></h3>
+    <h4 class="sec">Explicação: as proposições</h4>
+    <ul class="body">
+      <li><b>Projeto de lei:</b> cria ou altera lei; segue para sanção do Prefeito.</li>
+      <li><b>Requerimento:</b> pede uma providência ou uma informação.</li>
+      <li><b>Indicação:</b> sugere ao Executivo uma medida; não obriga.</li>
+      <li><b>Moção:</b> manifesta apoio, repúdio, pesar ou congratulação.</li>
+      <li><b>Emenda:</b> altera uma proposição (aditiva, supressiva, modificativa, substitutiva).</li>
+      <li><b>Autógrafo:</b> o texto final aprovado, enviado à sanção.</li>
+    </ul>
+    <h4 class="sec">Fases e quóruns</h4>
+    <ul class="body">
+      <li>Fases: iniciativa, discussão e votação (comissões e plenário), sanção ou veto, promulgação e publicação.</li>
+      <li>Quórum: <b>maioria simples</b> para lei ordinária; <b>maioria absoluta</b> para lei complementar; <b>2/3</b> para emenda à Lei Orgânica.</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Indicação apenas sugere, não obriga o Executivo.</li>
+      <li>Lei complementar exige maioria absoluta; a ordinária, maioria simples.</li>
+      <li>O veto do Prefeito pode ser derrubado pela Câmara.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 6</div>
+      <div class="enun">A proposição pela qual o vereador apenas sugere ao Executivo a adoção de uma medida, sem caráter obrigatório, é:</div>
+      <ul class="opts"><li><span class="letra">a)</span> projeto de lei</li><li><span class="letra">b)</span> indicação</li><li><span class="letra">c)</span> emenda</li><li><span class="letra">d)</span> autógrafo</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> A indicação sugere, sem obrigar. O projeto de lei cria norma; a emenda altera proposição; o autógrafo é o texto final.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 7</div>
+      <div class="enun">A aprovação de uma lei complementar exige:</div>
+      <ul class="opts"><li><span class="letra">a)</span> maioria simples</li><li><span class="letra">b)</span> maioria absoluta</li><li><span class="letra">c)</span> dois terços</li><li><span class="letra">d)</span> unanimidade</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Lei complementar pede maioria absoluta; a ordinária pede maioria simples.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 8</div>
+      <div class="enun">O texto final de um projeto aprovado pela Câmara, enviado ao Prefeito para sanção, chama-se:</div>
+      <ul class="opts"><li><span class="letra">a)</span> parecer</li><li><span class="letra">b)</span> autógrafo</li><li><span class="letra">c)</span> moção</li><li><span class="letra">d)</span> decreto</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> O autógrafo é a versão final aprovada, encaminhada à sanção.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-22 ===== -->
+  <div class="day-head" id="d22"><div class="dt">Sábado, 25/07 <small>Núcleo Diretor ★</small></div><div class="dd">D-22</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia (5 blocos)</div><ul>
+      <li><span class="p">P1</span>PPA, LDO, LOA</li><li><span class="p">P2</span>Créditos adicionais</li><li><span class="p">P3</span>Estágios da despesa</li><li><span class="p">P4</span>Estágios da receita</li><li><span class="p">P5</span>Revisão e questões</li>
+    </ul><div class="qgoal">Meta de questões do dia: 40</div></div>
+
+    <h3 class="topic-t">Orçamento público <span class="freq f-max">Muito alta</span></h3>
+    <h4 class="sec">Os três instrumentos (art. 165 da Constituição)</h4>
+    <ul class="body">
+      <li><b>PPA (Plano Plurianual):</b> vale por 4 anos; traz diretrizes, objetivos e metas de médio prazo. Vai do 2º ano de um mandato ao 1º ano do mandato seguinte.</li>
+      <li><b>LDO (Lei de Diretrizes Orçamentárias):</b> anual; orienta a elaboração da LOA, define metas e prioridades e traz o Anexo de Metas Fiscais.</li>
+      <li><b>LOA (Lei Orçamentária Anual):</b> anual; <b>estima a receita e fixa a despesa</b> do exercício.</li>
+    </ul>
+    <h4 class="sec">Estágios da despesa (a pergunta clássica)</h4>
+    <ul class="body">
+      <li><b>Empenho:</b> reserva a dotação e cria a obrigação; não pode exceder o crédito.</li>
+      <li><b>Liquidação:</b> verifica o direito do credor, conferindo o que, quanto e a quem.</li>
+      <li><b>Pagamento:</b> quitação, após a regular liquidação, por ordem de pagamento.</li>
+    </ul>
+    <h4 class="sec">Estágios da receita e créditos adicionais</h4>
+    <ul class="body">
+      <li>Receita: previsão, lançamento, arrecadação, recolhimento.</li>
+      <li><b>Crédito suplementar:</b> reforço de dotação já existente.</li>
+      <li><b>Crédito especial:</b> para despesa nova, sem dotação específica.</li>
+      <li><b>Crédito extraordinário:</b> despesa urgente e imprevisível (guerra, calamidade).</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>A ordem da despesa é <b>empenho, liquidação, pagamento</b>. Nunca inverta.</li>
+      <li>A LOA <b>estima</b> a receita e <b>fixa</b> a despesa (cuidado com "fixa a receita").</li>
+      <li>PPA = 4 anos; LDO e LOA = anuais.</li>
+      <li>Extraordinário é o imprevisível e urgente; especial é a despesa nova; suplementar é reforço.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 9</div>
+      <div class="enun">Os estágios da despesa pública, na ordem correta, são:</div>
+      <ul class="opts">
+        <li><span class="letra">a)</span> liquidação, empenho, pagamento</li>
+        <li><span class="letra">b)</span> empenho, pagamento, liquidação</li>
+        <li><span class="letra">c)</span> empenho, liquidação, pagamento</li>
+        <li><span class="letra">d)</span> pagamento, empenho, liquidação</li>
+      </ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> Primeiro empenha (reserva), depois liquida (confere o direito), depois paga.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 10</div>
+      <div class="enun">A lei que estima a receita e fixa a despesa para o exercício é a:</div>
+      <ul class="opts"><li><span class="letra">a)</span> PPA</li><li><span class="letra">b)</span> LDO</li><li><span class="letra">c)</span> LOA</li><li><span class="letra">d)</span> LRF</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> É a Lei Orçamentária Anual. O PPA é de 4 anos, a LDO orienta a LOA e a LRF trata de responsabilidade fiscal.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 11</div>
+      <div class="enun">O crédito adicional destinado a despesa urgente e imprevisível, como em calamidade pública, é o:</div>
+      <ul class="opts"><li><span class="letra">a)</span> suplementar</li><li><span class="letra">b)</span> especial</li><li><span class="letra">c)</span> extraordinário</li><li><span class="letra">d)</span> ordinário</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> Urgente e imprevisível = extraordinário. Reforço = suplementar; despesa nova = especial.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 12</div>
+      <div class="enun">O estágio da despesa em que se verifica o direito adquirido pelo credor, conferindo-se os documentos, é a:</div>
+      <ul class="opts"><li><span class="letra">a)</span> empenho</li><li><span class="letra">b)</span> liquidação</li><li><span class="letra">c)</span> pagamento</li><li><span class="letra">d)</span> previsão</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> A liquidação apura o direito do credor com base nos documentos (o que, quanto e a quem pagar).</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-19 ===== -->
+  <div class="day-head" id="d19"><div class="dt">Terça, 28/07 <small>Diretor: Lei 4.320 ★</small></div><div class="dd">D-19</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Receita e despesa na 4.320</li><li><span class="p">P2</span>Restos a pagar e adiantamentos</li></ul><div class="qgoal">Meta de questões do dia: 30</div></div>
+
+    <h3 class="topic-t">Lei 4.320/64 <span class="freq f-high">Alta</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li>O exercício financeiro coincide com o ano civil (1º de janeiro a 31 de dezembro).</li>
+      <li><b>Regime contábil misto (art. 35):</b> pertencem ao exercício as receitas nele <b>arrecadadas</b> (regime de caixa) e as despesas nele legalmente <b>empenhadas</b> (regime de competência).</li>
+      <li>Receita e despesa classificam-se em correntes e de capital.</li>
+      <li><b>Restos a pagar:</b> despesas empenhadas e não pagas até 31/12 (processadas, se já liquidadas; não processadas, se ainda não liquidadas).</li>
+      <li><b>Adiantamento (suprimento de fundos):</b> entrega de numerário a servidor para despesas que não podem seguir o processo normal, com posterior prestação de contas.</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Não troque o regime: receita é por caixa (arrecadada); despesa é por competência (empenhada).</li>
+      <li>Restos a pagar são despesas já empenhadas, não despesas apenas previstas.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 13</div>
+      <div class="enun">Pelo art. 35 da Lei 4.320/64, pertencem ao exercício financeiro as receitas nele ___ e as despesas nele legalmente ___.</div>
+      <ul class="opts">
+        <li><span class="letra">a)</span> empenhadas / arrecadadas</li>
+        <li><span class="letra">b)</span> arrecadadas / empenhadas</li>
+        <li><span class="letra">c)</span> previstas / pagas</li>
+        <li><span class="letra">d)</span> lançadas / liquidadas</li>
+      </ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Receitas arrecadadas (caixa) e despesas empenhadas (competência): é o regime misto da 4.320.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 14</div>
+      <div class="enun">O adiantamento (suprimento de fundos) consiste em:</div>
+      <ul class="opts">
+        <li><span class="letra">a)</span> empréstimo pessoal a servidor.</li>
+        <li><span class="letra">b)</span> entrega de numerário a servidor para despesas que não possam seguir o processo normal, com posterior prestação de contas.</li>
+        <li><span class="letra">c)</span> pagamento antecipado a fornecedor.</li>
+        <li><span class="letra">d)</span> transferência a outro ente.</li>
+      </ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> É o regime de adiantamento: numerário entregue ao servidor, com prestação de contas depois.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-17 ===== -->
+  <div class="day-head" id="d17"><div class="dt">Quinta, 30/07 <small>Diretor: LRF ★</small></div><div class="dd">D-17</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Despesa com pessoal e limites</li><li><span class="p">P2</span>RGF e transparência fiscal</li></ul><div class="qgoal">Meta de questões do dia: 30</div></div>
+
+    <h3 class="topic-t">LRF (Lei Complementar 101/2000) <span class="freq f-high">Alta</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li>Objetivo: gestão fiscal responsável, planejada e transparente, com equilíbrio das contas.</li>
+      <li><b>Despesa total com pessoal</b> (percentual da Receita Corrente Líquida): no Município, total de 60%, sendo <b>Executivo 54%</b> e <b>Legislativo 6%</b>. Limite prudencial: 95% do limite.</li>
+      <li><b>Câmara Municipal</b> tem ainda o limite do art. 29-A da Constituição: a folha de pagamento, incluídos os subsídios dos vereadores, não pode passar de <b>70% da receita da Câmara</b>.</li>
+      <li><b>Relatório de Gestão Fiscal (RGF):</b> em regra quadrimestral, mostra o cumprimento dos limites.</li>
+      <li><b>Relatório Resumido da Execução Orçamentária (RREO):</b> bimestral.</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Pessoal do Legislativo municipal: 6% da RCL. Total do município: 60%.</li>
+      <li>RGF é quadrimestral; RREO é bimestral. Não troque.</li>
+      <li>O limite de 70% do art. 29-A é sobre a receita da Câmara, e inclui o subsídio dos vereadores.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 15</div>
+      <div class="enun">O limite de despesa total com pessoal do Poder Legislativo municipal, pela LRF, é de:</div>
+      <ul class="opts"><li><span class="letra">a)</span> 60% da RCL</li><li><span class="letra">b)</span> 54% da RCL</li><li><span class="letra">c)</span> 6% da RCL</li><li><span class="letra">d)</span> 50% da RCL</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> No Município, o Legislativo tem 6% e o Executivo 54%, somando o total de 60% da RCL.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 16</div>
+      <div class="enun">O Relatório de Gestão Fiscal (RGF) é publicado, em regra, a cada:</div>
+      <ul class="opts"><li><span class="letra">a)</span> mês</li><li><span class="letra">b)</span> bimestre</li><li><span class="letra">c)</span> quadrimestre</li><li><span class="letra">d)</span> ano</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> O RGF é quadrimestral. Quem é bimestral é o RREO.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 17</div>
+      <div class="enun">Pela Constituição (art. 29-A), a folha de pagamento da Câmara, incluído o subsídio dos vereadores, não pode ultrapassar, da sua receita:</div>
+      <ul class="opts"><li><span class="letra">a)</span> 50%</li><li><span class="letra">b)</span> 60%</li><li><span class="letra">c)</span> 70%</li><li><span class="letra">d)</span> 75%</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> A Câmara não gastará mais de 70% da sua receita com folha, incluído o subsídio dos vereadores.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-15 ===== -->
+  <div class="day-head" id="d15"><div class="dt">Sábado, 01/08 <small>Leis locais</small></div><div class="dd">D-15</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia (5 blocos)</div><ul>
+      <li><span class="p">P1-P3</span>Regimento Interno de Tupi Paulista</li><li><span class="p">P4-P5</span>Lei Orgânica de Tupi Paulista</li>
+    </ul><div class="qgoal">Meta de questões do dia: 50</div></div>
+
+    <h3 class="topic-t">Regimento Interno e Lei Orgânica <span class="freq f-high">Alta</span></h3>
+    <div class="plan-note"><b>Como estudar:</b> aqui a banca cobra o texto da lei local, então o material é a própria lei. Regimento Interno: <a href="https://www.camaratupipta.sp.gov.br/storage/lei/edb84eb7902d9949b593d85817e28c3b.pdf">PDF oficial</a>. Lei Orgânica: <a href="https://www.tupipaulista.sp.gov.br/publicos/lei_orgAnica_municipal_-atualizada_2024_01023725.pdf">PDF oficial</a>. Ao ler, grife e monte fichas de: estrutura da Mesa e mandato, tipos e prazos de sessão, ordem do dia, quóruns de votação, comissões e suas competências, e o rito das proposições.</div>
+    <h4 class="sec">Base constitucional que costuma cair junto (art. 29 da CF)</h4>
+    <ul class="body">
+      <li>A Lei Orgânica é votada em <b>dois turnos</b> e aprovada por <b>2/3</b> dos membros da Câmara, com interstício mínimo de 10 dias.</li>
+      <li>Mandato de vereador: 4 anos.</li>
+      <li>Número de vereadores conforme faixas de população do município.</li>
+    </ul>
+    <div class="q"><div class="qnum">Questão 18</div>
+      <div class="enun">A Lei Orgânica Municipal é votada em dois turnos e aprovada por:</div>
+      <ul class="opts"><li><span class="letra">a)</span> maioria simples</li><li><span class="letra">b)</span> maioria absoluta</li><li><span class="letra">c)</span> dois terços dos membros da Câmara</li><li><span class="letra">d)</span> unanimidade</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> Art. 29 da CF: dois turnos, interstício mínimo de 10 dias e aprovação por 2/3 dos membros.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 19</div>
+      <div class="enun">O mandato dos vereadores é de:</div>
+      <ul class="opts"><li><span class="letra">a)</span> 2 anos</li><li><span class="letra">b)</span> 4 anos</li><li><span class="letra">c)</span> 5 anos</li><li><span class="letra">d)</span> 8 anos</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Vereador tem mandato de 4 anos. Atenção: o mandato da Mesa costuma ser de 2 anos, o que a banca usa para confundir.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-12 ===== -->
+  <div class="day-head" id="d12"><div class="dt">Terça, 04/08 <small>Específicos comuns</small></div><div class="dd">D-12</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Princípios e modalidades</li><li><span class="p">P2</span>Fases da licitação e contratos</li></ul><div class="qgoal">Meta de questões do dia: 35</div></div>
+
+    <h3 class="topic-t">Licitações (Lei 14.133/2021) <span class="freq f-mid">Média</span></h3>
+    <h4 class="sec">Modalidades (art. 28)</h4>
+    <ul class="body">
+      <li><b>Pregão:</b> bens e serviços comuns.</li>
+      <li><b>Concorrência:</b> obras, serviços e bens especiais.</li>
+      <li><b>Concurso:</b> trabalho técnico, científico ou artístico, com prêmio.</li>
+      <li><b>Leilão:</b> alienação de bens.</li>
+      <li><b>Diálogo competitivo:</b> soluções inovadoras ou complexas.</li>
+    </ul>
+    <h4 class="sec">Fases e contratação direta</h4>
+    <ul class="body">
+      <li>Fases: preparatória, divulgação do edital, propostas e lances, julgamento, habilitação, recursal, homologação. Em regra, o <b>julgamento vem antes da habilitação</b>.</li>
+      <li>Contratação direta: <b>dispensa</b> (a competição seria possível, mas a lei dispensa) e <b>inexigibilidade</b> (a competição é inviável, por exemplo, fornecedor exclusivo).</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Na 14.133 <b>não existem mais</b> tomada de preços e convite (eram da antiga 8.666).</li>
+      <li>Em regra, primeiro julga, depois habilita.</li>
+      <li>Dispensa é diferente de inexigibilidade.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 20</div>
+      <div class="enun">Não é modalidade de licitação prevista na Lei 14.133/2021:</div>
+      <ul class="opts"><li><span class="letra">a)</span> pregão</li><li><span class="letra">b)</span> concorrência</li><li><span class="letra">c)</span> tomada de preços</li><li><span class="letra">d)</span> leilão</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> Tomada de preços e convite foram extintos. As modalidades atuais são pregão, concorrência, concurso, leilão e diálogo competitivo.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 21</div>
+      <div class="enun">A modalidade indicada para a aquisição de bens e serviços comuns é o:</div>
+      <ul class="opts"><li><span class="letra">a)</span> concurso</li><li><span class="letra">b)</span> pregão</li><li><span class="letra">c)</span> leilão</li><li><span class="letra">d)</span> diálogo competitivo</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> O pregão é a modalidade para bens e serviços comuns.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 22</div>
+      <div class="enun">Quando a competição é inviável, por exemplo, no caso de fornecedor exclusivo, a contratação direta se dá por:</div>
+      <ul class="opts"><li><span class="letra">a)</span> dispensa</li><li><span class="letra">b)</span> inexigibilidade</li><li><span class="letra">c)</span> pregão</li><li><span class="letra">d)</span> concorrência</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Competição inviável leva à inexigibilidade. Na dispensa, a competição seria viável, mas a lei permite não licitar.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-11 ===== -->
+  <div class="day-head" id="d11"><div class="dt">Quarta, 05/08 <small>Diretor: controle ★</small></div><div class="dd">D-11</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Controle interno</li><li><span class="p">P2</span>Controle externo e Tribunal de Contas</li></ul><div class="qgoal">Meta de questões do dia: 35</div></div>
+
+    <h3 class="topic-t">Controle na Administração Pública <span class="freq f-mid">Média</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li><b>Controle interno (art. 74 da CF):</b> cada Poder controla seus próprios atos. Avalia o cumprimento de metas, comprova a legalidade da gestão e apoia o controle externo.</li>
+      <li><b>Controle externo (arts. 70 e 71):</b> exercido pelo Poder Legislativo, com auxílio do Tribunal de Contas. No município: Câmara mais Tribunal de Contas do Estado.</li>
+      <li>O responsável pelo controle interno que souber de irregularidade e não der ciência ao Tribunal de Contas responde solidariamente.</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>O controle externo é do Legislativo; o Tribunal de Contas apenas <b>auxilia</b> (é órgão autônomo, não faz parte do Legislativo).</li>
+      <li>Contas do Prefeito: parecer prévio do TCE e julgamento pela Câmara. Contas dos ordenadores de despesa: julgadas pelo próprio TCE.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 23</div>
+      <div class="enun">O controle externo, no âmbito municipal, é exercido:</div>
+      <ul class="opts">
+        <li><span class="letra">a)</span> pelo Tribunal de Contas isoladamente.</li>
+        <li><span class="letra">b)</span> pela Câmara Municipal, com o auxílio do Tribunal de Contas.</li>
+        <li><span class="letra">c)</span> pelo Prefeito.</li>
+        <li><span class="letra">d)</span> pelo controle interno.</li>
+      </ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> O controle externo é do Legislativo (Câmara), com auxílio do Tribunal de Contas.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 24</div>
+      <div class="enun">O controle que cada Poder exerce sobre seus próprios atos, previsto no art. 74 da CF, é o controle:</div>
+      <ul class="opts"><li><span class="letra">a)</span> externo</li><li><span class="letra">b)</span> interno</li><li><span class="letra">c)</span> social</li><li><span class="letra">d)</span> judicial</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> É o controle interno, mantido por cada Poder sobre a própria gestão.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-10 ===== -->
+  <div class="day-head" id="d10"><div class="dt">Quinta, 06/08 <small>Auxiliar: Raciocínio Lógico</small></div><div class="dd">D-10</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Conjuntos e Venn</li><li><span class="p">P2</span>Sequências e probabilidade</li></ul><div class="qgoal">Meta de questões do dia: 40</div></div>
+
+    <h3 class="topic-t">Conjuntos, sequências e probabilidade <span class="freq f-high">Alta</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li>Conjuntos: <b>n(A∪B) = n(A) + n(B) − n(A∩B)</b>. No diagrama de Venn, comece sempre pela interseção e vá de dentro para fora.</li>
+      <li>Sequências: descubra a regra (soma fixa, produto fixo ou padrão) e aplique.</li>
+      <li>Probabilidade: <b>P = casos favoráveis / casos possíveis</b>, entre 0 e 1. Complementar: P(não A) = 1 − P(A).</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Somar n(A) + n(B) sem subtrair a interseção conta o meio duas vezes.</li>
+      <li>Preencher o Venn de fora para dentro leva a erro; comece pela interseção.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 25</div>
+      <div class="enun">Numa turma, 30 alunos fazem inglês, 20 fazem espanhol e 8 fazem os dois idiomas. Quantos fazem pelo menos um idioma?</div>
+      <ul class="opts"><li><span class="letra">a)</span> 50</li><li><span class="letra">b)</span> 42</li><li><span class="letra">c)</span> 58</li><li><span class="letra">d)</span> 34</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> n(A∪B) = 30 + 20 − 8 = 42. O 50 é a pegadinha (somar sem tirar a interseção).</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 26</div>
+      <div class="enun">Ao lançar um dado comum, a probabilidade de sair um número par é:</div>
+      <ul class="opts"><li><span class="letra">a)</span> 1/2</li><li><span class="letra">b)</span> 1/3</li><li><span class="letra">c)</span> 1/6</li><li><span class="letra">d)</span> 2/3</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: A.</span> Pares: 2, 4, 6 (três casos) em seis possíveis: 3/6 = 1/2.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 27</div>
+      <div class="enun">Na sequência 2, 5, 8, 11, ... o próximo termo é:</div>
+      <ul class="opts"><li><span class="letra">a)</span> 12</li><li><span class="letra">b)</span> 13</li><li><span class="letra">c)</span> 14</li><li><span class="letra">d)</span> 15</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> A regra é somar 3 a cada termo: 11 + 3 = 14.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-9 ===== -->
+  <div class="day-head" id="d9"><div class="dt">Sexta, 07/08 <small>Específicos comuns</small></div><div class="dd">D-9</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>LGPD</li><li><span class="p">P2</span>Lei de Acesso à Informação</li></ul><div class="qgoal">Meta de questões do dia: 35</div></div>
+
+    <h3 class="topic-t">LGPD e LAI <span class="freq f-mid">Média</span></h3>
+    <h4 class="sec">LGPD (Lei 13.709/2018)</h4>
+    <ul class="body">
+      <li><b>Dado pessoal:</b> identifica ou torna identificável uma pessoa natural.</li>
+      <li><b>Dado sensível:</b> origem racial ou étnica, convicção religiosa, opinião política, saúde, vida sexual, dado genético ou biométrico.</li>
+      <li>Agentes: <b>controlador</b> (decide o tratamento), <b>operador</b> (trata em nome do controlador) e <b>encarregado</b> (canal com titulares e com a ANPD).</li>
+      <li>Direitos do titular: confirmação, acesso, correção, anonimização, portabilidade, eliminação e revogação do consentimento.</li>
+    </ul>
+    <h4 class="sec">LAI (Lei 12.527/2011)</h4>
+    <ul class="body">
+      <li>A <b>publicidade é a regra</b> e o sigilo é a exceção.</li>
+      <li>Transparência ativa (o órgão divulga sem pedido) e passiva (mediante solicitação).</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Saúde e biometria são dados sensíveis; nome e telefone são dados pessoais comuns.</li>
+      <li>Controlador decide; operador executa.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 28</div>
+      <div class="enun">São considerados dados pessoais sensíveis, pela LGPD:</div>
+      <ul class="opts"><li><span class="letra">a)</span> nome e endereço</li><li><span class="letra">b)</span> dados sobre saúde e biometria</li><li><span class="letra">c)</span> número de telefone</li><li><span class="letra">d)</span> e-mail profissional</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Saúde, biometria, religião, opinião política e origem racial são dados sensíveis, com proteção reforçada.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 29</div>
+      <div class="enun">Na LGPD, quem toma as decisões sobre o tratamento dos dados é o:</div>
+      <ul class="opts"><li><span class="letra">a)</span> operador</li><li><span class="letra">b)</span> titular</li><li><span class="letra">c)</span> controlador</li><li><span class="letra">d)</span> encarregado</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> O controlador decide; o operador apenas trata em nome dele.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 30</div>
+      <div class="enun">Pela Lei de Acesso à Informação, no acesso a informações públicas:</div>
+      <ul class="opts">
+        <li><span class="letra">a)</span> o sigilo é a regra.</li>
+        <li><span class="letra">b)</span> a publicidade é a regra e o sigilo a exceção.</li>
+        <li><span class="letra">c)</span> toda informação é secreta.</li>
+        <li><span class="letra">d)</span> só autoridades têm acesso.</li>
+      </ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> A LAI inverteu a lógica: publicidade como regra, sigilo apenas nas hipóteses legais.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-6 ===== -->
+  <div class="day-head" id="d6"><div class="dt">Segunda, 10/08 <small>Português</small></div><div class="dd">D-6</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Morfologia e pronomes</li><li><span class="p">P2</span>Figuras e vícios</li></ul><div class="qgoal">Meta de questões do dia: 40</div></div>
+
+    <h3 class="topic-t">Morfologia, figuras e vícios <span class="freq f-mid">Média</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li>Classes variáveis: substantivo, artigo, adjetivo, numeral, pronome, verbo. Invariáveis: advérbio, preposição, conjunção, interjeição.</li>
+      <li>Pronome relativo <b>cujo</b> indica posse e nunca vem seguido de artigo: "o autor <b>cujo livro</b> li".</li>
+      <li>Figuras: <b>metáfora</b> (comparação implícita), comparação (com "como"), <b>metonímia</b> (autor pela obra, parte pelo todo), antítese (opostos), hipérbole (exagero), eufemismo (suavizar).</li>
+      <li>Vícios: ambiguidade, <b>pleonasmo</b> (redundância), barbarismo, solecismo, cacófato.</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>"cujo" nunca vem com artigo depois ("cujo o livro" está errado).</li>
+      <li>Metáfora não usa "como"; comparação usa.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 31</div>
+      <div class="enun">"Ele é uma raposa nos negócios." A figura de linguagem presente é:</div>
+      <ul class="opts"><li><span class="letra">a)</span> comparação</li><li><span class="letra">b)</span> metáfora</li><li><span class="letra">c)</span> hipérbole</li><li><span class="letra">d)</span> eufemismo</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> É metáfora: comparação implícita, sem "como". Com "como" ("esperto como uma raposa") seria comparação.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 32</div>
+      <div class="enun">Assinale a frase com emprego correto de "cujo":</div>
+      <ul class="opts">
+        <li><span class="letra">a)</span> O autor cujo o livro li.</li>
+        <li><span class="letra">b)</span> O autor cujo livro li.</li>
+        <li><span class="letra">c)</span> O autor cujo que o livro.</li>
+        <li><span class="letra">d)</span> O livro cujo autor o li.</li>
+      </ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> "cujo" liga posse e não admite artigo depois: "o autor cujo livro li".</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 33</div>
+      <div class="enun">"Subir para cima" é exemplo de:</div>
+      <ul class="opts"><li><span class="letra">a)</span> metáfora</li><li><span class="letra">b)</span> pleonasmo</li><li><span class="letra">c)</span> antítese</li><li><span class="letra">d)</span> eufemismo</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> É pleonasmo (vicioso): repete uma ideia já contida em "subir".</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-3 ===== -->
+  <div class="day-head" id="d3"><div class="dt">Quinta, 13/08 <small>Específicos comuns</small></div><div class="dd">D-3</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>Redação oficial e rotinas</li><li><span class="p">P2</span>Almoxarifado e gestão documental</li></ul><div class="qgoal">Meta de questões do dia: 40</div></div>
+
+    <h3 class="topic-t">Redação oficial e rotinas <span class="freq f-mid">Média</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li>Qualidades da redação oficial: impessoalidade, clareza, concisão, formalidade e padronização, no padrão culto da língua.</li>
+      <li>Documentos: <b>ofício</b> (comunicação entre órgãos), comunicação interna, <b>ata</b> (registro de reunião ou sessão), certidão, declaração, despacho (decisão em processo) e parecer.</li>
+      <li>Pronomes de tratamento levam o verbo na 3ª pessoa: "Vossa Excelência <b>decidiu</b>".</li>
+      <li>Fechos: "Atenciosamente" (mesma hierarquia ou inferior) e "Respeitosamente" (para autoridade superior).</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Pronome de tratamento concorda em 3ª pessoa ("Vossa Senhoria enviou", não "enviastes").</li>
+      <li>Redação oficial não admite subjetividade ou linguagem informal.</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 34</div>
+      <div class="enun">São qualidades da redação oficial, EXCETO:</div>
+      <ul class="opts"><li><span class="letra">a)</span> impessoalidade</li><li><span class="letra">b)</span> clareza</li><li><span class="letra">c)</span> subjetividade</li><li><span class="letra">d)</span> padronização</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: C.</span> A redação oficial é impessoal e objetiva; subjetividade é justamente o que se evita.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 35</div>
+      <div class="enun">O documento usado para registrar o que se passou em uma reunião ou sessão é a:</div>
+      <ul class="opts"><li><span class="letra">a)</span> certidão</li><li><span class="letra">b)</span> ata</li><li><span class="letra">c)</span> moção</li><li><span class="letra">d)</span> portaria</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> A ata registra o ocorrido em reuniões e sessões.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <!-- ===== D-2 ===== -->
+  <div class="day-head" id="d2"><div class="dt">Sexta, 14/08 <small>Auxiliar: Raciocínio Lógico</small></div><div class="dd">D-2</div></div>
+  <div class="day-body">
+    <div class="foco"><div class="lbl">Foco do dia</div><ul><li><span class="p">P1</span>MMC e MDC</li><li><span class="p">P2</span>Média e gráficos</li></ul><div class="qgoal">Meta de questões do dia: 40</div></div>
+
+    <h3 class="topic-t">MMC, MDC, média e gráficos <span class="freq f-mid">Média</span></h3>
+    <h4 class="sec">Explicação</h4>
+    <ul class="body">
+      <li><b>MMC</b> (menor múltiplo comum): use quando eventos se repetem e você quer saber quando coincidem de novo.</li>
+      <li><b>MDC</b> (maior divisor comum): use para repartir em grupos iguais, o maior possível.</li>
+      <li><b>Média aritmética</b> = soma dos valores dividida pela quantidade.</li>
+      <li>Gráficos e tabelas: leia os eixos, compare valores e calcule percentuais.</li>
+    </ul>
+    <div class="trapbox"><div class="t">Pegadinhas</div><ul>
+      <li>Confundir quando usar MMC (coincidência futura) e MDC (divisão em partes iguais).</li>
+    </ul></div>
+    <div class="q"><div class="qnum">Questão 36</div>
+      <div class="enun">Dois sinais tocam, um a cada 12 minutos e outro a cada 18 minutos. Se tocaram juntos agora, voltarão a tocar juntos após:</div>
+      <ul class="opts"><li><span class="letra">a)</span> 6 minutos</li><li><span class="letra">b)</span> 36 minutos</li><li><span class="letra">c)</span> 30 minutos</li><li><span class="letra">d)</span> 216 minutos</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> Coincidência futura pede MMC: MMC(12, 18) = 36 minutos.</div>
+    </div>
+    <div class="q"><div class="qnum">Questão 37</div>
+      <div class="enun">A média aritmética das notas 6, 8 e 10 é:</div>
+      <ul class="opts"><li><span class="letra">a)</span> 7</li><li><span class="letra">b)</span> 8</li><li><span class="letra">c)</span> 9</li><li><span class="letra">d)</span> 24</li></ul>
+      <button class="reveal">Ver gabarito comentado</button>
+      <div class="ans"><span class="gab">Gabarito: B.</span> (6 + 8 + 10) / 3 = 24 / 3 = 8. O 24 é a soma, a pegadinha.</div>
+    </div>
+    <a class="backtop" href="#topo">↑ voltar ao índice</a>
+  </div>
+
+  <footer>
+    <p>Com este volume, os dias do cronograma ficam cobertos de ponta a ponta. Os simulados (D-8 e D-1) continuam sendo o momento de juntar tudo: use o QConcursos filtrando pela banca CONSESP e revise pelo caderno de erros.</p>
+    <p style="margin-top:10px;">Questões autorais no estilo CONSESP, para treino. Provas reais: QConcursos (filtro CONSESP) e PCI Concursos (provas anteriores). O conteúdo jurídico e financeiro tem base em normas conhecidas até o começo de 2026; confira sempre a legislação atualizada, o edital e o Regimento e a Lei Orgânica de Tupi Paulista.</p>
+  </footer>
+
+</div>
+
+<script>
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.classList.contains('reveal')){
+      var ans = e.target.parentElement.querySelector('.ans');
+      if(ans){
+        var open = ans.classList.toggle('show');
+        e.target.textContent = open ? 'Ocultar gabarito' : 'Ver gabarito comentado';
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

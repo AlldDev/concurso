@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onde Resolver Questões | Câmara de Tupi Paulista 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F5F6F4;
+    --ink:#17242B;
+    --ink-soft:#48585F;
+    --line:#DDE2DE;
+    --petrol:#0F6E64;
+    --petrol-deep:#0A4A43;
+    --card:#FFFFFF;
+    /* escala de calor = probabilidade de cair */
+    --heat-max:#A6331A;
+    --heat-high:#DB7A3B;
+    --heat-mid:#E8B84B;
+    --heat-low:#C3CBC4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+  .mono{font-family:"IBM Plex Mono",monospace;}
+
+  /* TOPBAR / MENU */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--petrol-deep);
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .bar-inner{
+    max-width:960px;margin:0 auto;padding:12px 20px;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  }
+  .brand{
+    font-family:"Fraunces",serif;font-weight:600;color:#EAF3F1;text-decoration:none;
+    font-size:16px;letter-spacing:-.01em;white-space:nowrap;
+  }
+  .brand .mini{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--heat-mid);margin-left:8px;}
+  .topbar nav{display:flex;gap:6px;flex-wrap:wrap;}
+  .topbar nav a{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;
+    color:#B9D6D0;text-decoration:none;padding:7px 12px;border-radius:8px;white-space:nowrap;
+    transition:background .15s,color .15s;
+  }
+  .topbar nav a:hover{background:rgba(255,255,255,.08);color:#fff;}
+  .topbar nav a.active{background:var(--heat-high);color:#2a1405;}
+
+  /* SECTIONS */
+  section{padding:44px 0;border-bottom:1px solid var(--line);}
+  h2{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(24px,4vw,32px);margin:0 0 6px;letter-spacing:-.01em;
+  }
+  .lead{color:var(--ink-soft);max-width:66ch;margin:0 0 26px;}
+
+  a{color:var(--petrol-deep);}
+  .site{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px;}
+  .site .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  .site .rank{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--heat-high);}
+  .site .nm{font-family:"Fraunces",serif;font-size:19px;font-weight:600;}
+  .site p{margin:6px 0 0;color:var(--ink-soft);font-size:14.5px;}
+
+  footer{padding:34px 0 60px;color:var(--ink-soft);font-size:13px;border-top:1px solid var(--line);}
+  footer p{max-width:70ch;}
+
+  @media print{
+    body{background:#fff;}
+    .topbar{position:static;background:#fff;border-bottom:2px solid #000;}
+    .topbar nav a{color:#333;}
+    .site{break-inside:avoid;}
+    section{border-color:#ccc;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="bar-inner">
+    <a class="brand" href="index.html">Câmara de Tupi Paulista<span class="mini">D-29</span></a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="mapa-de-probabilidade.html">Mapa de probabilidade</a>
+      <a href="cronograma.html">Cronograma</a>
+      <a href="questoes.html" class="active">Questões</a>
+      <a href="02-apostila-por-dia.html">Apostila por dia</a>
+      <a href="03-apostila-volume-1.html">Apostila Vol. 1</a>
+      <a href="04-apostila-volume-2.html">Apostila Vol. 2</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+  <section>
+    <div class="wrap">
+      <h2>Onde resolver questões</h2>
+      <p class="lead">Como a CONSESP é uma banca de porte menor, o recurso mais valioso são as provas anteriores dela mesma: a banca reaproveita muito o estilo e até o conteúdo das perguntas. Combine um banco de questões grande com o download das provas passadas.</p>
+
+      <div class="site">
+        <div class="top"><span class="rank">01</span><span class="nm">QConcursos</span></div>
+        <p>O maior banco de questões do país. Filtre por <b>banca CONSESP</b> e pelas matérias do edital para treinar no estilo certo. Bom para volume e para os relatórios de acerto por assunto, que ajudam a achar seus pontos fracos. Tem versão gratuita com limite diário e planos pagos.</p>
+      </div>
+      <div class="site">
+        <div class="top"><span class="rank">02</span><span class="nm">TEC Concursos</span></div>
+        <p>Filtros por banca e assunto muito bons e comentários de qualidade. Ótimo complemento ao QConcursos, sobretudo para os específicos e para o bloco financeiro do Diretor.</p>
+      </div>
+      <div class="site">
+        <div class="top"><span class="rank">03</span><span class="nm">PCI Concursos (provas anteriores)</span></div>
+        <p>Gratuito. Baixe provas antigas da CONSESP para concursos de Câmara e Prefeitura e resolva como simulado. É o jeito mais direto de se acostumar com o formato real da banca. Faça pelo menos 2 ou 3 provas completas anteriores antes do dia 16.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Sobre as probabilidades:</b> a escala de calor reflete o padrão histórico típico da banca CONSESP em cargos parecidos, com base em conhecimento até o começo de 2026. Não é uma estatística exata deste edital. Trate como bússola de priorização e ajuste conforme o que você encontrar nas provas anteriores reais da banca. Acompanhe também o site oficial (www.consesp.com.br) para o cartão de convocação e o local de prova, divulgados com no mínimo 3 dias de antecedência.</p>
+  </div>
+</footer>
+
+</body>
+</html>
